@@ -5,6 +5,9 @@
     <!-- Aqui va el contenido qeu cambia, y lo asocio a la vista -->
     <h1> Lista de Access Points</h1>
     <a href="{% url 'AddAccessPoint' %}" >Agregar Nuevo</a>
+    <br></br>
+    {% include 'search.html' %}
+    <br></br>
     <table class="table">
         <tr><th>Name</th><th>Ip Address</th><th>Status</th></tr>
             {% for accesspoint in accessPoints %}

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-#from django.http import HttpResponse
+from django.http import HttpResponse
 from .models import *
 from .forms import *
 
@@ -28,7 +28,26 @@ def add_access_point(req):
    
 def access_points(req):
     access_points = AccessPoints.objects.all()
+    print(access_points)
     return render(req, "accesspoints.html", {"accessPoints": access_points})  
 
 def switches(req):
-    return render(req, 'switches.html')  
+    return render(req, 'switches.html') 
+
+def busqueda(req):
+    return render(req, "search.html")
+
+def buscar(req):
+
+    if req.GET["ipAddress"]:
+        #rsta = f"Estoy busdcando el Access Point con ip: {req.GET['ipAddress'] }"
+        ipAddress = req.GET['ipAddress']
+        deviceName = AccessPoints.objects.filter(ipAddress__icontains=ipAddress)
+        status = AccessPoints.objects.filter(ipAddress__icontains=ipAddress)
+        return render(req, "resultadosBusqueda.html", {"deviceName":deviceName, "ipAddress":ipAddress, "status":status})
+        #return HttpResponse(rsta)
+    
+    else:
+        rsta = "No se ingresaron datos"
+    
+    return HttpResponse(rsta)

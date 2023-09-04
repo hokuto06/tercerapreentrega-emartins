@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content%}
+
+<p>Buscando la ip: {{ipAddress}}</p>
+
+{% if ipAddress %}
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Ip Address</th>
+        <th>Status</th>
+    </tr>
+{% for device in deviceName %}
+<tr>
+    <td>{{ device.deviceName }}</td>
+    <td>{{ device.ipAddress }}</td>
+    <td>{{ device.status }}</td>
+</tr>
+{% endfor %}
+</table>
+
+</ul>
+
+{% endif %}
+{% endblock %}

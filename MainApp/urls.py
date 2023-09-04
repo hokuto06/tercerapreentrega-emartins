@@ -8,4 +8,6 @@ urlpatterns = [
     path('access-point-form', views.add_access_point, name='AddAccessPoint'),
     path('access-points', views.access_points, name='AccessPoints'),
     path('switches', views.switches, name='Switches'),
+    path('busqueda', views.busqueda, name="Busqueda"),
+    path('buscar/', views.buscar),
 ]
