@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+    {% load static %}
+    {% block content %}
+
+    <!-- Aqui va el contenido qeu cambia, y lo asocio a la vista -->
+    <h1> Lista de Access Points</h1>
+    <a href="{% url 'AddAccessPoint' %}" >Agregar Nuevo</a>
+    <table class="table">
+        <tr><th>Name</th><th>Ip Address</th><th>Status</th></tr>
+            {% for accesspoint in accessPoints %}
+            <tr>
+                <td>{{accesspoint.deviceName}}</td>
+                <td>{{accesspoint.ipAddress}}</td>
+                <td>{{accesspoint.status}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endblock %}
