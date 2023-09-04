@@ -25,14 +25,35 @@ def add_access_point(req):
         myForm = AccessPointForm()
 
     return render(req, "AccessPointForm.html", {"myForm": myForm})
-   
+
+def add_switch(req):
+    if req.method == 'POST':
+        myForm = SwitchForm(req.POST)
+        print(myForm)
+        if myForm.is_valid:
+
+            data = myForm.cleaned_data
+
+            switches = Switches( deviceName = data['deviceName'], ipAddress = data['ipAddress'], marca = data['marca'], status = data['status'])
+
+            switches.save()
+            _switches = Switches.objects.all()
+            return render(req, "switches.html", {"switches": _switches})
+
+    else:
+
+        myForm = SwitchForm()
+
+    return render(req, "SwitchesForm.html", {"myForm": myForm})
+
 def access_points(req):
-    access_points = AccessPoints.objects.all()
+    all_access_points = AccessPoints.objects.all()
     print(access_points)
-    return render(req, "accesspoints.html", {"accessPoints": access_points})  
+    return render(req, "accesspoints.html", {"accessPoints": all_access_points})  
 
 def switches(req):
-    return render(req, 'switches.html') 
+    all_switches = Switches.objects.all()
+    return render(req, 'switches.html', {"switches": all_switches}) 
 
 def busqueda(req):
     return render(req, "search.html")

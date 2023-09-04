@@ -3,6 +3,20 @@
     {% block content %}
 
     <!-- Aqui va el contenido qeu cambia, y lo asocio a la vista -->
-    <h1> Lista de Switches</h1>
-
+    <h1> Switches</h1>
+    <a href="{% url 'AddSwitch' %}" >Agregar Nuevo</a>
+    <br></br>
+    {% include 'search.html' %}
+    <br></br>
+    <table class="table">
+        <tr><th>Name</th><th>Ip Address</th><th>Marca</th><th>Status</th></tr>
+            {% for switch in switches %}
+            <tr>
+                <td>{{switch.deviceName}}</td>
+                <td>{{switch.ipAddress}}</td>
+                <td>{{switch.marca}}</td>
+                <td>{{switch.status}}</td>
+            </tr>
+            {% endfor %}
+        </table>
     {% endblock %}
