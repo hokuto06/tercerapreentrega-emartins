@@ -11,4 +11,11 @@ class SwitchForm(forms.Form):
     deviceName = forms.CharField()
     ipAddress = forms.GenericIPAddressField()
     status = forms.IntegerField()
-    marca = forms.CharField()    
+    marca = forms.CharField()
+    
+class ServerForm(forms.Form):
+
+    deviceName = forms.CharField()
+    ipAddress = forms.GenericIPAddressField()
+    status = forms.IntegerField()
+    service = forms.CharField()

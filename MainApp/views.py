@@ -4,9 +4,11 @@ from .models import *
 from .forms import *
 
 def inicio(req):
+
     return render(req, 'inicio.html')
 
 def add_access_point(req):
+
     if req.method == 'POST':
         myForm = AccessPointForm(req.POST)
         print(myForm)
@@ -27,6 +29,7 @@ def add_access_point(req):
     return render(req, "AccessPointForm.html", {"myForm": myForm})
 
 def add_switch(req):
+
     if req.method == 'POST':
         myForm = SwitchForm(req.POST)
         print(myForm)
@@ -47,15 +50,18 @@ def add_switch(req):
     return render(req, "SwitchesForm.html", {"myForm": myForm})
 
 def access_points(req):
+
     all_access_points = AccessPoints.objects.all()
     print(access_points)
     return render(req, "accesspoints.html", {"accessPoints": all_access_points})  
 
 def switches(req):
+
     all_switches = Switches.objects.all()
     return render(req, 'switches.html', {"switches": all_switches}) 
 
 def busqueda(req):
+
     return render(req, "search.html")
 
 def buscar(req):
@@ -72,3 +78,26 @@ def buscar(req):
         rsta = "No se ingresaron datos"
     
     return HttpResponse(rsta)
+
+def servers(req):
+
+    all_servers = Servers.objects.all()
+    return render(req, 'servers.html', {"servers": all_servers}) 
+
+def add_server(req):
+
+    if req.method == 'POST':
+        myForm = ServerForm(req.POST)
+        print(myForm)
+        if myForm.is_valid:
+
+            data = myForm.cleaned_data
+
+            servers = Servers( deviceName = data['deviceName'], ipAddress = data['ipAddress'], service = data['service'], status = data['status'])
+
+            servers.save()
+            _servers = Servers.objects.all()
+            return render(req, "servers.html", {"servers": _servers})
+    else:
+        myForm = ServerForm()
+    return render(req, "AccessPointForm.html", {"myForm": myForm})

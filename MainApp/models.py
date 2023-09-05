@@ -14,4 +14,11 @@ class Switches(models.Model):
     marca = models.CharField(max_length=30)
     status = models.IntegerField()
 
+class Servers(models.Model):
+
+    deviceName = models.CharField(max_length=30)
+    ipAddress = models.GenericIPAddressField(unique=True)
+    service = models.CharField(max_length=10)
+    status = models.IntegerField()
+
 

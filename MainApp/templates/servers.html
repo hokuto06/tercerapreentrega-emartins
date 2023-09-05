@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+    {% load static %}
+    {% block content %}
+
+    <!-- Aqui va el contenido qeu cambia, y lo asocio a la vista -->
+    <h1> Servers</h1>
+    <a href="{% url 'AddServer' %}" >Agregar Nuevo</a>
+    <br></br>
+    <br></br>    
+    <table class="table">
+        <tr><th>Name</th><th>Ip Address</th><th>service</th><th>Status</th></tr>
+            {% for server in servers %}
+            <tr>
+                <td>{{server.deviceName}}</td>
+                <td>{{server.ipAddress}}</td>
+                <td>{{server.service}}</td>
+                <td>{{server.status}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endblock %}

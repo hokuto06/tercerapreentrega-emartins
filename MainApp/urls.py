@@ -11,4 +11,6 @@ urlpatterns = [
     path('switches', views.switches, name='Switches'),
     path('busqueda', views.busqueda, name="Busqueda"),
     path('buscar/', views.buscar),
+    path('servers', views.servers, name="Servers"),
+    path('servers-form', views.add_server, name="AddServer")
 ]
