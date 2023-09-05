@@ -1,1 +1,1 @@
-Este es el readme
+La pagina de este proyecto contiene 3 visitas diferentes donde se pueden visualizar equipos de red. 
