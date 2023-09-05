@@ -4,8 +4,6 @@
 
 {% block content%}
 
-<p>Buscando la ip: {{ipAddress}}</p>
-
 {% if ipAddress %}
 
 <table class="table">
@@ -20,6 +18,8 @@
     <td>{{ device.ipAddress }}</td>
     <td>{{ device.status }}</td>
 </tr>
+    {% empty %}
+    <tr><td colspan="6">No se encontraron datos</td></tr>
 {% endfor %}
 </table>
 

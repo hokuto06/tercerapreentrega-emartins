@@ -9,7 +9,7 @@ urlpatterns = [
     path('switches-form', views.add_switch, name='AddSwitch'),
     path('access-points', views.access_points, name='AccessPoints'),
     path('switches', views.switches, name='Switches'),
-    path('busqueda', views.busqueda, name="Busqueda"),
+    #path('busqueda', views.busqueda, name="Busqueda"),
     path('buscar/', views.buscar),
     path('servers', views.servers, name="Servers"),
     path('servers-form', views.add_server, name="AddServer")

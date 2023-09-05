@@ -60,9 +60,9 @@ def switches(req):
     all_switches = Switches.objects.all()
     return render(req, 'switches.html', {"switches": all_switches}) 
 
-def busqueda(req):
+# def busqueda(req):
 
-    return render(req, "search.html")
+#     return render(req, "search.html")
 
 def buscar(req):
 
